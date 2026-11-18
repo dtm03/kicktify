@@ -1,0 +1,12 @@
+data/cache/
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.env.*
+*.pyc
+tipps_naechster_spieltag.html
+downloaded_files/
+.idea/
+.vscode/
