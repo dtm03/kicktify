@@ -1,18 +1,20 @@
 # ml-for-kicktipp
 
-Kleines ML-Projekt für **Kicktipp-Tipps** zur **1. Bundesliga**: historische Daten laden, Modell trainieren, Ergebnisse für den **nächsten Spieltag** ausgeben.
+Small machine-learning project for **Bundesliga match predictions** (e.g. Kicktipp): load historical data, train a model, and output score tips for the **next matchday**.
 
-Es werden **keine API-Keys** benötigt. Datenquellen sind öffentlich (OpenLigaDB, football-data.co.uk, Transfermarkt-Liste der Verletzten).
+**No API keys** are required. Data comes from public sources (OpenLigaDB, football-data.co.uk, Transfermarkt injury list).
 
-## Voraussetzungen
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-- Python 3.10+ (getestet mit 3.12)
-- Internet beim ersten Lauf (danach überwiegend lokaler Cache in `data/cache/` — dieser Ordner wird **nicht** ins Git committed)
+## Requirements
+
+- Python 3.10+ (tested on 3.12)
+- Internet on the first run (then mostly local cache in `data/cache/` — that folder is **not** committed to Git)
 
 ## Installation
 
 ```bash
-git clone <deine-repo-url>
+git clone <your-repo-url>
 cd ml-for-kicktipp
 python -m venv .venv
 ```
@@ -31,58 +33,54 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Tipps anzeigen (empfohlen)
+## Get predictions (recommended)
 
 ```bash
 python tipps.py
 ```
 
-- Ausgabe in der **Konsole**
-- zusätzlich Datei **`tipps_naechster_spieltag.html`** im Projektordner (im Browser öffnen)
+- Output in the **terminal**
+- Also writes **`tipps_naechster_spieltag.html`** in the project folder (open in a browser)
 
-Optional:
+Optional flags:
 
 ```bash
-python tipps.py --seasons 2024 2027    # weniger History = schneller
-python tipps.py --backend poisson      # statt XGBoost
+python tipps.py --seasons 2024 2027    # less history = faster training
+python tipps.py --backend poisson      # instead of XGBoost
 ```
 
-## Jupyter Notebook
+## Jupyter notebook
 
 ```bash
 jupyter notebook bundesliga_kicktipp.ipynb
 ```
 
-Alle Zellen von oben nach unten ausführen.
+Run all cells from top to bottom.
 
-## Was das Modell nutzt (kurz)
+## What the model uses
 
-- **Aktuelle Saison & Form** (letzte Spiele, schwer gewichtet)
-- **Tabellennahe** Kennzahl: Punkte pro Spiel
-- **Elo** als allgemeine Mannschaftsstärke
-- Schuss-xG aus football-data für Form
-- optional Pokal-Spiele (Belastung), Verletzungsliste (Transfermarkt)
+- **Current season & form** (recent matches, weighted heavily)
+- **Table proxy**: points per game this season
+- **Elo** for overall team strength
+- Shot-based xG from football-data for form
+- DFB-Pokal fixtures (workload), injury counts (Transfermarkt)
 
-Tipps sind **Schätzungen**, kein Anspruch auf optimale Kicktipp-Punkte.
+Predictions are **estimates**, not a guarantee of optimal Kicktipp points.
 
-## Repo / Datenschutz
+## Publishing this repo
 
-| Thema | Hinweis |
-|--------|--------|
-| **Secrets** | Nicht nötig — nichts in `.env` anlegen, falls du nichts Eigenes hinzufügst |
-| **`.gitignore`** | schließt `data/cache/`, `.venv`, `__pycache__`, generierte HTML-Tipps aus |
-| **Personenbezogene Daten** | keine im Code; Cache nur öffentliche Fußball-APIs |
-| **`ideas.md`** | private Notizen — vor Publish prüfen, ob du sie committen willst |
+| Topic             | Notes                                                               |
+| ----------------- | ------------------------------------------------------------------- |
+| **Secrets**       | None needed — no `.env` unless you add your own integrations        |
+| **`.gitignore`**  | Excludes `data/cache/`, `.venv`, `__pycache__`, generated HTML tips |
+| **Personal data** | None in the code; cache is only public football APIs                |
+| **`ideas.md`**    | Personal notes — decide whether to commit before publishing         |
 
-## Lizenz
-
-Wenn du öffentlich veröffentlichst: Lizenz setzen (z. B. MIT) — sonst ist die Nutzung für andere unklar.
-
-## Struktur
+## Project layout
 
 ```
-kicktipp/           # Modell & Datenlogik
-tipps.py            # CLI-Einstieg
+kicktipp/                 # model & data pipeline
+tipps.py                  # CLI entry point
 bundesliga_kicktipp.ipynb
 requirements.txt
 ```
