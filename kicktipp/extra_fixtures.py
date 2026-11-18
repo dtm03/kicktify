@@ -1,4 +1,4 @@
-"""Zusätzliche Pflichtspiele (DFB-Pokal, ggf. Europa) für Belastung."""
+"""Extra competitive fixtures (DFB-Pokal, European cups) for workload features."""
 
 from __future__ import annotations
 

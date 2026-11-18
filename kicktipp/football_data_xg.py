@@ -1,4 +1,4 @@
-"""xG-Schätzung aus Schussdaten (football-data.co.uk, D1)."""
+"""xG estimate from shot data (football-data.co.uk, D1)."""
 
 from __future__ import annotations
 
@@ -51,7 +51,7 @@ def load_season_xg(openliga_season: int) -> pd.DataFrame:
             last_err = e
             time.sleep(1.0)
     else:
-        raise RuntimeError(f"football-data {url} nicht ladbar") from last_err
+        raise RuntimeError(f"Could not load football-data URL: {url}") from last_err
 
     if raw.empty:
         return pd.DataFrame()

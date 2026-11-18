@@ -1,4 +1,4 @@
-"""Feature-Engineering aus Spielverlauf (ohne Data Leakage)."""
+"""Feature engineering from match history (no data leakage)."""
 
 from __future__ import annotations
 
@@ -48,7 +48,7 @@ class TeamState:
 
 @dataclass
 class FeatureBuilder:
-    """Baut vor jedem Spiel Features nur aus Vergangenheit."""
+    """Build pre-match features using only past information."""
 
     teams: dict[str, TeamState] = field(default_factory=lambda: defaultdict(TeamState))
     last_match_dt: dict[str, datetime | None] = field(default_factory=dict)
@@ -88,7 +88,7 @@ class FeatureBuilder:
         st = self._team(name)
         cutoff = kickoff - timedelta(days=14)
         extra_14d = sum(1 for dt in st.extra_kickoffs if cutoff <= dt < kickoff)
-        european_14d = 0  # reserviert, falls Europa-Liga-Daten verfügbar
+        european_14d = 0  # reserved when European competition data is available
         midweek = sum(1 for dt in st.extra_kickoffs if cutoff <= dt < kickoff and dt.weekday() <= 3)
         return extra_14d, european_14d, midweek
 
@@ -228,7 +228,7 @@ class FeatureBuilder:
         *,
         is_european: bool = False,
     ) -> None:
-        """Pokal/Europa: Belastung + leichte Form-Anpassung (Gewicht 0.45)."""
+        """Cup/Europe: workload + lighter form update (weight 0.45)."""
         home, away = normalize_team(home), normalize_team(away)
         weight = 0.65 if is_european else 0.45
         h, a = self._team(home), self._team(away)

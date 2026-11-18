@@ -1,4 +1,4 @@
-"""Dixon–Coles-Korrektur für Remis und knappe Ergebnisse."""
+"""Dixon–Coles adjustment for draws and low-scoring results."""
 
 from __future__ import annotations
 
@@ -53,7 +53,7 @@ def fit_rho(
     goals_away: np.ndarray,
     grid: int = 21,
 ) -> float:
-    """Grobe MLE über symmetrische Rho-Raster für Trainingsdaten."""
+    """Rough MLE over a rho grid on training data."""
     rhos = np.linspace(-0.25, 0.08, grid)
     best_rho, best_ll = 0.0, -np.inf
     for rho in rhos:

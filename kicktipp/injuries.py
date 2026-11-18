@@ -1,4 +1,4 @@
-"""Verletztenliste Bundesliga (Transfermarkt, gecacht)."""
+"""Bundesliga injury list (Transfermarkt, cached)."""
 
 from __future__ import annotations
 
@@ -47,5 +47,5 @@ def fetch_injury_counts() -> dict[str, int]:
 
 
 def injury_penalty(injury_count: int) -> float:
-    """Leichte Strafe ab vielen Ausfällen (Topteams oft viele Einträge → nicht überziehen)."""
+    """Mild penalty for many listed injuries (big clubs often have long lists)."""
     return max(0.92, 1.0 - 0.008 * max(injury_count - 5, 0))

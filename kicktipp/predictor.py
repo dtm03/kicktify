@@ -1,4 +1,4 @@
-"""Training & Vorhersage (Poisson oder XGBoost + Dixon–Coles)."""
+"""Training and prediction (Poisson or XGBoost + optional Dixon–Coles)."""
 
 from __future__ import annotations
 
@@ -80,7 +80,7 @@ class BundesligaPredictor:
                 if row:
                     rows.append(row)
         if not rows:
-            raise RuntimeError("Keine historischen Spiele von OpenLigaDB geladen.")
+            raise RuntimeError("No historical matches loaded from OpenLigaDB.")
         df = pd.DataFrame(rows).sort_values("datetime").reset_index(drop=True)
         self.history = df
         return df
@@ -229,7 +229,7 @@ class BundesligaPredictor:
 
     def predict_next_matchday(self) -> pd.DataFrame:
         if self.home_model is None or self.away_model is None or self.builder is None:
-            raise RuntimeError("Modell nicht trainiert – zuerst .fit() aufrufen.")
+            raise RuntimeError("Model not trained — call .fit() first.")
 
         try:
             self.injury_counts = fetch_injury_counts()
@@ -238,7 +238,7 @@ class BundesligaPredictor:
 
         matches = self._upcoming_matches()
         if not matches:
-            raise RuntimeError("Keine anstehenden Spiele gefunden.")
+            raise RuntimeError("No upcoming matches found.")
 
         rows: list[dict] = []
         for m in matches:
@@ -263,18 +263,18 @@ class BundesligaPredictor:
             gh, ga = self._score_from_lambdas(lam_h, lam_a, feats)
             rows.append(
                 {
-                    "Spieltag": m["matchday"],
-                    "Datum": m["datetime"].strftime("%a %d.%m.%Y %H:%M"),
-                    "Heim": home,
-                    "Gast": away,
-                    "Tipp": f"{gh}:{ga}",
-                    "Erwartung (xG)": f"{lam_h:.2f}:{lam_a:.2f}",
-                    "Verletzte (H:A)": f"{hi}:{ai}",
-                    "Modell": self.model_backend,
+                    "Matchday": m["matchday"],
+                    "Date": m["datetime"].strftime("%a %d.%m.%Y %H:%M"),
+                    "Home": home,
+                    "Away": away,
+                    "Pick": f"{gh}:{ga}",
+                    "Expected (xG)": f"{lam_h:.2f}:{lam_a:.2f}",
+                    "Injuries (H:A)": f"{hi}:{ai}",
+                    "Model": self.model_backend,
                 }
             )
         out = pd.DataFrame(rows)
-        return out.sort_values("Datum").reset_index(drop=True)
+        return out.sort_values("Date").reset_index(drop=True)
 
     def training_summary(self) -> dict[str, float]:
         if self.history is None or self.home_model is None:

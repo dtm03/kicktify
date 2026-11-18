@@ -1,4 +1,4 @@
-"""Vereinsnamen zwischen Datenquellen vereinheitlichen."""
+"""Normalize club names across data sources."""
 
 from __future__ import annotations
 

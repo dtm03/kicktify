@@ -1,4 +1,4 @@
-"""Bundesliga Kicktipp-Vorhersagen (OpenLigaDB + Poisson-Regression)."""
+"""Bundesliga Kicktipp predictions (OpenLigaDB + Poisson / XGBoost)."""
 
 from .predictor import BundesligaPredictor
 

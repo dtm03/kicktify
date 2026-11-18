@@ -40,7 +40,7 @@ python tipps.py
 ```
 
 - Output in the **terminal**
-- Also writes **`tipps_naechster_spieltag.html`** in the project folder (open in a browser)
+- Also writes **`next_matchday_tips.html`** in the project folder (open in a browser)
 
 Optional flags:
 

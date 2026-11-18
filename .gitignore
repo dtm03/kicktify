@@ -7,6 +7,7 @@ venv/
 .env.*
 *.pyc
 tipps_naechster_spieltag.html
+next_matchday_tips.html
 downloaded_files/
 .idea/
 .vscode/

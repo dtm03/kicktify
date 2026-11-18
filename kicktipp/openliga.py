@@ -43,7 +43,7 @@ def _get(path: str, *, use_cache: bool = True, cache_ttl_hours: float = 6.0) -> 
         except Exception as e:
             last_err = e
             time.sleep(1.5 * (attempt + 1))
-    raise RuntimeError(f"OpenLigaDB nicht erreichbar: {path}") from last_err
+    raise RuntimeError(f"OpenLigaDB unreachable: {path}") from last_err
 
 
 def get_current_matchday() -> dict[str, Any]:
@@ -51,7 +51,7 @@ def get_current_matchday() -> dict[str, Any]:
 
 
 def get_matchday_matches(season: int | None = None, matchday: int | None = None) -> list[dict]:
-    """Aktueller Spieltag wenn season/matchday None; sonst feste Saison/Spieltag."""
+    """Current matchday when season/matchday are None; else fixed season/matchday."""
     if season is None and matchday is None:
         return _get(f"/getmatchdata/{LEAGUE}")
     if matchday is None:
@@ -90,7 +90,7 @@ def parse_match_datetime(match: dict) -> datetime | None:
     raw = match.get("matchDateTime")
     if not raw:
         return None
-    # API liefert ISO ohne Zeitzone (lokale Spielzeit)
+    # API returns ISO local time without timezone
     return datetime.fromisoformat(raw)
 
 

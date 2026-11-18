@@ -1,4 +1,4 @@
-"""Kicktipp-Tore aus Erwartungswerten (weniger 1:1-Flut, stärkere Favoriten)."""
+"""Turn expected goals into Kicktipp score picks (fewer draw floods, clearer favourites)."""
 
 from __future__ import annotations
 
@@ -12,9 +12,9 @@ def blend_goal_expectation(
     *,
     elo_diff_signed: float,
 ) -> float:
-    """Modell + aktuelle Torgefahr (Form schwerer als alte Saisons)."""
+    """Blend model output with recent scoring (form weighted above old seasons)."""
     lam = 0.45 * model_lam + 0.25 * form_goals_pg + 0.15 * form_xg_pg
-    lam += 0.15 * form_goals_pg  # Form-Tore stärker
+    lam += 0.15 * form_goals_pg  # extra weight on recent goals
     if elo_diff_signed > 0:
         lam *= 1.0 + min(0.12, elo_diff_signed / 2400.0)
     elif elo_diff_signed < 0:
@@ -42,7 +42,7 @@ def kicktipp_score(
     gh = int(np.clip(round(lam_h), 0, 5))
     ga = int(np.clip(round(lam_a), 0, 5))
 
-    # Klare Favoriten laut Modell nicht durch Heimvorteil „überstimmen“
+    # Do not let home advantage override a clear away favourite in the model
     if lam_a > lam_h + 0.18 and gh > ga:
         gh, ga = ga, gh
     elif lam_h > lam_a + 0.18 and ga > gh:
