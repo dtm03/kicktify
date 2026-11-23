@@ -101,7 +101,7 @@ cd web && npm install && npm run dev
 
 1. Import repo
 2. **Root Directory:** `web`
-3. Build `prebuild` runs Python exports if the build image has Python; otherwise commit the three JSON files before deploy
+3. **No Python on Vercel build** — commit the three JSON files (or let the weekly Action update them); locally optional: `cd web && npm run data:export`
 4. **Free tier is enough** — no heavy `/api/predict` in production use
 
 ---

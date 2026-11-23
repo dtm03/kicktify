@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prebuild": "cd .. && python -m pip install -q -r requirements.txt && python scripts/export_web_data.py --backend poisson && python scripts/export_prediction_status.py",
+    "data:export": "cd .. && python -m pip install -q -r requirements.txt && python scripts/export_web_data.py --backend poisson && python scripts/export_prediction_status.py",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
