@@ -566,6 +566,8 @@
       auto
       auto;
     min-height: 100dvh;
+    height: auto;
+    --mobile-stage-h: calc(100dvh - 8.75rem);
     --page-pad: clamp(1rem, 4vw, 1.75rem);
     padding: 0 var(--page-pad) clamp(1.25rem, 4vw, 2rem);
   }
@@ -599,10 +601,11 @@
     grid-column: 1;
     grid-row: 4;
     grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(20rem, 56dvh);
+    grid-template-rows: auto minmax(22rem, var(--mobile-stage-h));
     gap: 0.65rem;
-    min-height: 0;
-    height: auto;
+    min-height: var(--mobile-stage-h);
+    height: var(--mobile-stage-h);
+    max-height: var(--mobile-stage-h);
     overflow: hidden;
   }
 
@@ -656,6 +659,7 @@
     align-self: stretch;
     touch-action: pan-y;
     gap: 0.65rem;
+    scroll-snap-type: y proximity;
   }
 
   .matchdayPane {
@@ -666,6 +670,8 @@
     padding: 1.15rem 1.05rem 1.35rem;
     border-radius: 18px;
     overflow: visible;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .slideBody {
@@ -675,9 +681,33 @@
     padding-bottom: 0;
   }
 
+  .slideHead {
+    margin-bottom: 0.65rem;
+  }
+
   .matchdayStats {
-    font-size: 0.78rem;
-    gap: 0.35rem 0.55rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    gap: 0.3rem 0.45rem;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    font-size: clamp(0.62rem, 2.4vw, 0.74rem);
+    line-height: 1.3;
+  }
+
+  .matchdayStats span:not(.pointsBadge) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pointsBadge {
+    margin: 0;
+    padding: 0.2rem 0.55rem;
+    font-size: clamp(0.62rem, 2.4vw, 0.76rem);
+    white-space: nowrap;
+    justify-self: end;
   }
 
   .mdNum {
@@ -725,6 +755,10 @@
 }
 
 @media (max-width: 640px) {
+  .layout {
+    --mobile-stage-h: calc(100dvh - 11rem);
+  }
+
   .topBar {
     flex-direction: column;
     align-items: stretch;
@@ -735,10 +769,6 @@
     width: 100%;
     padding: 0.95rem 1.25rem;
     font-size: 1rem;
-  }
-
-  .stage {
-    grid-template-rows: auto minmax(17.5rem, 48dvh);
   }
 
   .table {
@@ -813,12 +843,6 @@
   .matchdayPanePredicted .table th:nth-child(4),
   .matchdayPanePredicted .table td:nth-child(4) {
     display: none;
-  }
-}
-
-@media (max-width: 400px) {
-  .matchdayStats span:not(.pointsBadge) {
-    flex: 1 1 40%;
   }
 }
 
