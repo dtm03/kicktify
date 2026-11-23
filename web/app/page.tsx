@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 
 type Stats = {
@@ -83,6 +83,40 @@ function StatCard({ title, stats, field }: { title: string; stats: Stats; field:
   );
 }
 
+function Logo() {
+  return <div className={styles.logo}>kicktify</div>;
+}
+
+const VARIANTS = ["slide", "zoom", "wipe", "flip"] as const;
+
+function Reveal({ index, children }: { index: number; children: React.ReactNode }) {
+  const ref = useRef<HTMLElement>(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setSeen(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.12 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <section
+      ref={ref}
+      className={`${styles.matchdayCard} ${styles[VARIANTS[index % VARIANTS.length]]} ${seen ? styles.in : ""}`}
+    >
+      {children}
+    </section>
+  );
+}
+
 export default function HomePage() {
   const [history, setHistory] = useState<BacktestData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -153,25 +187,19 @@ export default function HomePage() {
   return (
     <>
       <header className={styles.stickyBar}>
-        <button
-          type="button"
-          className={styles.cta}
-          onClick={predictNext}
-          disabled={predicting}
-        >
-          {predicting ? "Vorhersage wird geladen…" : "Nächsten Spieltag predicten"}
-        </button>
-        {gate?.upcoming && (
-          <p className={styles.hint}>
-            Spieltag {gate.upcoming.matchday} · erster Anpfiff {gate.upcoming.first_kickoff_display}
-            {gate.allowed === false ? ` · ${gate.message}` : ""}
-          </p>
-        )}
-        <p className={styles.hint}>
-          Nach jedem Reload nur die History — oben Tipps erst nach Klick (lädt ~5 s aus dem Repo, bereits von der GitHub
-          Action berechnet).
-        </p>
-        {predictError && <p className={styles.error}>{predictError}</p>}
+        <Logo />
+        <div className={styles.headerRight}>
+          <button type="button" className={styles.cta} onClick={predictNext} disabled={predicting}>
+            {predicting ? "Vorhersage wird geladen…" : "Nächsten Spieltag predicten"}
+          </button>
+          {gate?.upcoming && (
+            <p className={styles.hint}>
+              Spieltag {gate.upcoming.matchday} · erster Anpfiff {gate.upcoming.first_kickoff_display}
+              {gate.allowed === false ? ` · ${gate.message}` : ""}
+            </p>
+          )}
+          {predictError && <p className={styles.error}>{predictError}</p>}
+        </div>
       </header>
 
       {live && (
@@ -198,7 +226,6 @@ export default function HomePage() {
       )}
 
       <main className={styles.main}>
-        <h1>Bundesliga · Saison-Backtest</h1>
         {loadError && <p className={styles.error}>{loadError}</p>}
         {history && (
           <>
@@ -230,8 +257,9 @@ export default function HomePage() {
               <StatCard title="Torabstand" stats={history.season_stats} field="margin" />
             </div>
 
-            {history.matchdays.map((block) => (
-              <section key={block.matchday} className={styles.matchdayCard}>
+            {history.matchdays.map((block, idx) => (
+              <Reveal key={block.matchday} index={idx}>
+                <span className={styles.mdNum} aria-hidden="true">{String(block.matchday).padStart(2, "0")}</span>
                 <header className={styles.matchdayHead}>
                   <h2>Spieltag {block.matchday}</h2>
                   <div className={styles.matchdayStats}>
@@ -257,8 +285,12 @@ export default function HomePage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {block.matches.map((m) => (
-                      <tr key={`${m.home}-${m.kickoff}`}>
+                    {block.matches.map((m, i) => (
+                      <tr
+                        key={`${m.home}-${m.kickoff}`}
+                        className={m.kicktipp_points > 0 ? styles.ok : styles.miss}
+                        style={{ "--i": i } as React.CSSProperties}
+                      >
                         <td>{m.kickoff}</td>
                         <td>
                           {m.home} – {m.away}
@@ -273,7 +305,7 @@ export default function HomePage() {
                     ))}
                   </tbody>
                 </table>
-              </section>
+              </Reveal>
             ))}
           </>
         )}
