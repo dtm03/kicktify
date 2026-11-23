@@ -1,0 +1,22 @@
+{
+  "name": "ml-for-kicktipp-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "cd .. && python -m pip install -q -r requirements.txt && python scripts/export_web_data.py --backend poisson && python scripts/export_prediction_status.py",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^16.4.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}

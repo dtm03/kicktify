@@ -1,0 +1,13 @@
+{
+  "allowed": false,
+  "message": "Spieltag 11 wurde bereits vorhergesagt (Stand: 2026-11-23T16:43:03.503439+00:00).",
+  "upcoming": {
+    "season": 2026,
+    "matchday": 11,
+    "first_kickoff": "2026-11-27T20:30:00",
+    "last_kickoff": "2026-11-29T19:30:00",
+    "first_kickoff_display": "Fri 27.11.2026 20:30",
+    "fixture_count": 9
+  },
+  "saved_prediction_matchday": 11
+}

@@ -66,6 +66,24 @@ def get_season_matches(season: int) -> list[dict]:
         return []
 
 
+def load_consecutive_finished_rows(season: int, *, max_matchday: int = 38) -> list[dict]:
+    """Finished matchdays 1..N via per-matchday API (avoids stale full-season cache)."""
+    rows: list[dict] = []
+    seen: set[int] = set()
+    for md in range(1, max_matchday + 1):
+        batch = get_matchday_matches(season, md)
+        if not batch:
+            break
+        if not all(m.get("matchIsFinished") for m in batch):
+            break
+        for m in batch:
+            row = match_row(m)
+            if row and row["match_id"] not in seen:
+                seen.add(row["match_id"])
+                rows.append(row)
+    return rows
+
+
 def get_league_season_matches(league_shortcut: str, season: int) -> list[dict]:
     try:
         return _get(

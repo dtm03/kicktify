@@ -159,7 +159,7 @@ class BundesligaPredictor:
 
     def fit(self, df: pd.DataFrame | None = None) -> "BundesligaPredictor":
         train = self.build_training_set(df)
-        x = train[FEATURE_COLUMNS].astype(float)
+        x = train[FEATURE_COLUMNS].astype(float).fillna(0.0)
         self.home_model = self._make_pipeline()
         self.away_model = self._make_pipeline()
         max_season = int(train["season"].max())

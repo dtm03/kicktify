@@ -1,0 +1,79 @@
+{
+  "season": 2026,
+  "matchday": 11,
+  "predicted_at": "2026-11-23T16:43:03.503439+00:00",
+  "matches": [
+    {
+      "home": "SV Werder Bremen",
+      "away": "Borussia Mönchengladbach",
+      "pick": "2:1",
+      "kickoff": "Fri 27.11.2026 20:30",
+      "expected_xg": "2.38:1.01",
+      "injuries": "9:6"
+    },
+    {
+      "home": "1. FSV Mainz 05",
+      "away": "1. FC Union Berlin",
+      "pick": "2:1",
+      "kickoff": "Sat 28.11.2026 15:30",
+      "expected_xg": "1.66:1.13",
+      "injuries": "0:0"
+    },
+    {
+      "home": "Hamburger SV",
+      "away": "FC Bayern München",
+      "pick": "1:3",
+      "kickoff": "Sat 28.11.2026 15:30",
+      "expected_xg": "1.50:2.83",
+      "injuries": "6:7"
+    },
+    {
+      "home": "1. FC Köln",
+      "away": "SV 07 Elversberg",
+      "pick": "1:2",
+      "kickoff": "Sat 28.11.2026 15:30",
+      "expected_xg": "0.66:1.96",
+      "injuries": "0:3"
+    },
+    {
+      "home": "SC Paderborn 07",
+      "away": "FC Schalke 04",
+      "pick": "2:1",
+      "kickoff": "Sat 28.11.2026 15:30",
+      "expected_xg": "1.89:1.28",
+      "injuries": "3:5"
+    },
+    {
+      "home": "VfB Stuttgart",
+      "away": "Eintracht Frankfurt",
+      "pick": "2:1",
+      "kickoff": "Sat 28.11.2026 18:30",
+      "expected_xg": "1.91:1.12",
+      "injuries": "2:2"
+    },
+    {
+      "home": "SC Freiburg",
+      "away": "RB Leipzig",
+      "pick": "2:2",
+      "kickoff": "Sun 29.11.2026 15:30",
+      "expected_xg": "2.08:2.34",
+      "injuries": "0:4"
+    },
+    {
+      "home": "TSG Hoffenheim",
+      "away": "FC Augsburg",
+      "pick": "3:2",
+      "kickoff": "Sun 29.11.2026 17:30",
+      "expected_xg": "2.14:1.79",
+      "injuries": "0:6"
+    },
+    {
+      "home": "Borussia Dortmund",
+      "away": "Bayer 04 Leverkusen",
+      "pick": "3:2",
+      "kickoff": "Sun 29.11.2026 19:30",
+      "expected_xg": "1.76:1.36",
+      "injuries": "7:3"
+    }
+  ]
+}

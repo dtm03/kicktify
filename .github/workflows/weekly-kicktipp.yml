@@ -1,0 +1,31 @@
+# Optional: run weekly on GitHub (free), commit JSON, Vercel redeploys static data.
+# Secrets: none. Disable if you prefer local predict_and_save.py only.
+
+name: weekly-kicktipp
+
+on:
+  schedule:
+    - cron: "0 8 * * 1" # Monday 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python scripts/export_web_data.py --backend poisson
+      - run: python scripts/export_prediction_status.py
+      - run: python scripts/predict_and_save.py --force --backend xgboost
+      - name: Commit JSON if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add web/public/data/
+          git diff --staged --quiet || git commit -m "chore: update kicktipp JSON data"
+          git push
