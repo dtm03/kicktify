@@ -41,24 +41,12 @@
           "kicktipp_points": 0
         },
         {
-          "home": "Bayer 04 Leverkusen",
-          "away": "SC Paderborn 07",
-          "pick": "3:1",
-          "actual": "4:0",
+          "home": "Borussia Mönchengladbach",
+          "away": "Borussia Dortmund",
+          "pick": "1:2",
+          "actual": "0:1",
           "kickoff": "Sat 21.11.2026 15:30",
-          "expected_xg": "3.08:1.23",
-          "exact": false,
-          "tendency": true,
-          "margin": false,
-          "kicktipp_points": 2
-        },
-        {
-          "home": "Eintracht Frankfurt",
-          "away": "TSG Hoffenheim",
-          "pick": "2:1",
-          "actual": "1:0",
-          "kickoff": "Sat 21.11.2026 15:30",
-          "expected_xg": "1.98:1.53",
+          "expected_xg": "1.20:2.26",
           "exact": false,
           "tendency": true,
           "margin": true,
@@ -77,24 +65,36 @@
           "kicktipp_points": 2
         },
         {
-          "home": "Borussia Mönchengladbach",
-          "away": "Borussia Dortmund",
-          "pick": "1:2",
-          "actual": "0:1",
-          "kickoff": "Sat 21.11.2026 15:30",
-          "expected_xg": "1.20:2.26",
-          "exact": false,
-          "tendency": true,
-          "margin": true,
-          "kicktipp_points": 3
-        },
-        {
           "home": "SV 07 Elversberg",
           "away": "SC Freiburg",
           "pick": "2:3",
           "actual": "0:1",
           "kickoff": "Sat 21.11.2026 15:30",
           "expected_xg": "1.62:1.79",
+          "exact": false,
+          "tendency": true,
+          "margin": true,
+          "kicktipp_points": 3
+        },
+        {
+          "home": "Bayer 04 Leverkusen",
+          "away": "SC Paderborn 07",
+          "pick": "3:1",
+          "actual": "4:0",
+          "kickoff": "Sat 21.11.2026 15:30",
+          "expected_xg": "3.08:1.23",
+          "exact": false,
+          "tendency": true,
+          "margin": false,
+          "kicktipp_points": 2
+        },
+        {
+          "home": "Eintracht Frankfurt",
+          "away": "TSG Hoffenheim",
+          "pick": "2:1",
+          "actual": "1:0",
+          "kickoff": "Sat 21.11.2026 15:30",
+          "expected_xg": "1.98:1.53",
           "exact": false,
           "tendency": true,
           "margin": true,
@@ -166,6 +166,30 @@
           "kicktipp_points": 2
         },
         {
+          "home": "SC Paderborn 07",
+          "away": "Eintracht Frankfurt",
+          "pick": "1:1",
+          "actual": "2:2",
+          "kickoff": "Sat 07.11.2026 15:30",
+          "expected_xg": "1.50:1.20",
+          "exact": false,
+          "tendency": true,
+          "margin": true,
+          "kicktipp_points": 3
+        },
+        {
+          "home": "1. FSV Mainz 05",
+          "away": "FC Bayern München",
+          "pick": "1:3",
+          "actual": "1:2",
+          "kickoff": "Sat 07.11.2026 15:30",
+          "expected_xg": "1.70:2.69",
+          "exact": false,
+          "tendency": true,
+          "margin": false,
+          "kicktipp_points": 2
+        },
+        {
           "home": "Borussia Dortmund",
           "away": "SV 07 Elversberg",
           "pick": "2:1",
@@ -188,30 +212,6 @@
           "tendency": true,
           "margin": false,
           "kicktipp_points": 2
-        },
-        {
-          "home": "1. FSV Mainz 05",
-          "away": "FC Bayern München",
-          "pick": "1:3",
-          "actual": "1:2",
-          "kickoff": "Sat 07.11.2026 15:30",
-          "expected_xg": "1.70:2.69",
-          "exact": false,
-          "tendency": true,
-          "margin": false,
-          "kicktipp_points": 2
-        },
-        {
-          "home": "SC Paderborn 07",
-          "away": "Eintracht Frankfurt",
-          "pick": "1:1",
-          "actual": "2:2",
-          "kickoff": "Sat 07.11.2026 15:30",
-          "expected_xg": "1.50:1.20",
-          "exact": false,
-          "tendency": true,
-          "margin": true,
-          "kicktipp_points": 3
         },
         {
           "home": "VfB Stuttgart",
@@ -416,28 +416,16 @@
           "kicktipp_points": 0
         },
         {
-          "home": "SC Paderborn 07",
-          "away": "Hamburger SV",
-          "pick": "1:2",
-          "actual": "1:0",
+          "home": "1. FSV Mainz 05",
+          "away": "SV Werder Bremen",
+          "pick": "3:2",
+          "actual": "2:3",
           "kickoff": "Sat 24.10.2026 15:30",
-          "expected_xg": "1.30:1.36",
+          "expected_xg": "1.65:1.44",
           "exact": false,
           "tendency": false,
           "margin": false,
           "kicktipp_points": 0
-        },
-        {
-          "home": "1. FC Köln",
-          "away": "FC Schalke 04",
-          "pick": "1:1",
-          "actual": "0:0",
-          "kickoff": "Sat 24.10.2026 15:30",
-          "expected_xg": "1.40:1.48",
-          "exact": false,
-          "tendency": true,
-          "margin": true,
-          "kicktipp_points": 3
         },
         {
           "home": "RB Leipzig",
@@ -464,12 +452,24 @@
           "kicktipp_points": 0
         },
         {
-          "home": "1. FSV Mainz 05",
-          "away": "SV Werder Bremen",
-          "pick": "3:2",
-          "actual": "2:3",
+          "home": "1. FC Köln",
+          "away": "FC Schalke 04",
+          "pick": "1:1",
+          "actual": "0:0",
           "kickoff": "Sat 24.10.2026 15:30",
-          "expected_xg": "1.65:1.44",
+          "expected_xg": "1.40:1.48",
+          "exact": false,
+          "tendency": true,
+          "margin": true,
+          "kicktipp_points": 3
+        },
+        {
+          "home": "SC Paderborn 07",
+          "away": "Hamburger SV",
+          "pick": "1:2",
+          "actual": "1:0",
+          "kickoff": "Sat 24.10.2026 15:30",
+          "expected_xg": "1.30:1.36",
           "exact": false,
           "tendency": false,
           "margin": false,
@@ -541,36 +541,12 @@
           "kicktipp_points": 3
         },
         {
-          "home": "1. FC Union Berlin",
-          "away": "Borussia Dortmund",
+          "home": "SV 07 Elversberg",
+          "away": "FC Augsburg",
           "pick": "1:2",
-          "actual": "0:0",
+          "actual": "4:3",
           "kickoff": "Sat 17.10.2026 15:30",
-          "expected_xg": "1.26:2.03",
-          "exact": false,
-          "tendency": false,
-          "margin": false,
-          "kicktipp_points": 0
-        },
-        {
-          "home": "Hamburger SV",
-          "away": "VfB Stuttgart",
-          "pick": "2:2",
-          "actual": "1:0",
-          "kickoff": "Sat 17.10.2026 15:30",
-          "expected_xg": "1.95:1.40",
-          "exact": false,
-          "tendency": false,
-          "margin": false,
-          "kicktipp_points": 0
-        },
-        {
-          "home": "SV Werder Bremen",
-          "away": "SC Paderborn 07",
-          "pick": "2:1",
-          "actual": "2:2",
-          "kickoff": "Sat 17.10.2026 15:30",
-          "expected_xg": "1.81:1.13",
+          "expected_xg": "1.64:1.29",
           "exact": false,
           "tendency": false,
           "margin": false,
@@ -589,12 +565,36 @@
           "kicktipp_points": 3
         },
         {
-          "home": "SV 07 Elversberg",
-          "away": "FC Augsburg",
-          "pick": "1:2",
-          "actual": "4:3",
+          "home": "Hamburger SV",
+          "away": "VfB Stuttgart",
+          "pick": "2:2",
+          "actual": "1:0",
           "kickoff": "Sat 17.10.2026 15:30",
-          "expected_xg": "1.64:1.29",
+          "expected_xg": "1.95:1.40",
+          "exact": false,
+          "tendency": false,
+          "margin": false,
+          "kicktipp_points": 0
+        },
+        {
+          "home": "1. FC Union Berlin",
+          "away": "Borussia Dortmund",
+          "pick": "1:2",
+          "actual": "0:0",
+          "kickoff": "Sat 17.10.2026 15:30",
+          "expected_xg": "1.26:2.03",
+          "exact": false,
+          "tendency": false,
+          "margin": false,
+          "kicktipp_points": 0
+        },
+        {
+          "home": "SV Werder Bremen",
+          "away": "SC Paderborn 07",
+          "pick": "2:1",
+          "actual": "2:2",
+          "kickoff": "Sat 17.10.2026 15:30",
+          "expected_xg": "1.81:1.13",
           "exact": false,
           "tendency": false,
           "margin": false,
@@ -666,6 +666,30 @@
           "kicktipp_points": 0
         },
         {
+          "home": "SC Paderborn 07",
+          "away": "VfB Stuttgart",
+          "pick": "1:2",
+          "actual": "0:2",
+          "kickoff": "Sat 10.10.2026 15:30",
+          "expected_xg": "1.71:2.16",
+          "exact": false,
+          "tendency": true,
+          "margin": false,
+          "kicktipp_points": 2
+        },
+        {
+          "home": "1. FC Union Berlin",
+          "away": "SV 07 Elversberg",
+          "pick": "1:2",
+          "actual": "1:0",
+          "kickoff": "Sat 10.10.2026 15:30",
+          "expected_xg": "1.34:1.93",
+          "exact": false,
+          "tendency": false,
+          "margin": false,
+          "kicktipp_points": 0
+        },
+        {
           "home": "TSG Hoffenheim",
           "away": "Hamburger SV",
           "pick": "2:1",
@@ -700,30 +724,6 @@
           "tendency": true,
           "margin": true,
           "kicktipp_points": 3
-        },
-        {
-          "home": "1. FC Union Berlin",
-          "away": "SV 07 Elversberg",
-          "pick": "1:2",
-          "actual": "1:0",
-          "kickoff": "Sat 10.10.2026 15:30",
-          "expected_xg": "1.34:1.93",
-          "exact": false,
-          "tendency": false,
-          "margin": false,
-          "kicktipp_points": 0
-        },
-        {
-          "home": "SC Paderborn 07",
-          "away": "VfB Stuttgart",
-          "pick": "1:2",
-          "actual": "0:2",
-          "kickoff": "Sat 10.10.2026 15:30",
-          "expected_xg": "1.71:2.16",
-          "exact": false,
-          "tendency": true,
-          "margin": false,
-          "kicktipp_points": 2
         },
         {
           "home": "RB Leipzig",
@@ -916,18 +916,6 @@
           "kicktipp_points": 0
         },
         {
-          "home": "FC Augsburg",
-          "away": "Bayer 04 Leverkusen",
-          "pick": "4:3",
-          "actual": "2:2",
-          "kickoff": "Sat 12.09.2026 15:30",
-          "expected_xg": "2.02:2.18",
-          "exact": false,
-          "tendency": false,
-          "margin": false,
-          "kicktipp_points": 0
-        },
-        {
           "home": "Borussia Dortmund",
           "away": "SC Paderborn 07",
           "pick": "2:0",
@@ -962,6 +950,18 @@
           "tendency": true,
           "margin": false,
           "kicktipp_points": 2
+        },
+        {
+          "home": "FC Augsburg",
+          "away": "Bayer 04 Leverkusen",
+          "pick": "4:3",
+          "actual": "2:2",
+          "kickoff": "Sat 12.09.2026 15:30",
+          "expected_xg": "2.02:2.18",
+          "exact": false,
+          "tendency": false,
+          "margin": false,
+          "kicktipp_points": 0
         },
         {
           "home": "1. FSV Mainz 05",
@@ -1041,16 +1041,28 @@
           "kicktipp_points": 0
         },
         {
-          "home": "SC Paderborn 07",
-          "away": "SC Freiburg",
-          "pick": "1:3",
-          "actual": "0:1",
+          "home": "TSG Hoffenheim",
+          "away": "Borussia Dortmund",
+          "pick": "2:3",
+          "actual": "2:3",
           "kickoff": "Sat 05.09.2026 15:30",
-          "expected_xg": "1.13:2.00",
-          "exact": false,
+          "expected_xg": "0.93:2.08",
+          "exact": true,
           "tendency": true,
+          "margin": true,
+          "kicktipp_points": 4
+        },
+        {
+          "home": "Bayer 04 Leverkusen",
+          "away": "1. FC Union Berlin",
+          "pick": "2:3",
+          "actual": "4:0",
+          "kickoff": "Sat 05.09.2026 15:30",
+          "expected_xg": "1.15:2.37",
+          "exact": false,
+          "tendency": false,
           "margin": false,
-          "kicktipp_points": 2
+          "kicktipp_points": 0
         },
         {
           "home": "Borussia Mönchengladbach",
@@ -1077,28 +1089,16 @@
           "kicktipp_points": 0
         },
         {
-          "home": "TSG Hoffenheim",
-          "away": "Borussia Dortmund",
-          "pick": "2:3",
-          "actual": "2:3",
+          "home": "SC Paderborn 07",
+          "away": "SC Freiburg",
+          "pick": "1:3",
+          "actual": "0:1",
           "kickoff": "Sat 05.09.2026 15:30",
-          "expected_xg": "0.93:2.08",
-          "exact": true,
-          "tendency": true,
-          "margin": true,
-          "kicktipp_points": 4
-        },
-        {
-          "home": "Bayer 04 Leverkusen",
-          "away": "1. FC Union Berlin",
-          "pick": "2:3",
-          "actual": "4:0",
-          "kickoff": "Sat 05.09.2026 15:30",
-          "expected_xg": "1.15:2.37",
+          "expected_xg": "1.13:2.00",
           "exact": false,
-          "tendency": false,
+          "tendency": true,
           "margin": false,
-          "kicktipp_points": 0
+          "kicktipp_points": 2
         },
         {
           "home": "FC Schalke 04",
@@ -1166,24 +1166,24 @@
           "kicktipp_points": 2
         },
         {
-          "home": "SV 07 Elversberg",
-          "away": "Bayer 04 Leverkusen",
-          "pick": "1:2",
-          "actual": "3:2",
+          "home": "1. FC Union Berlin",
+          "away": "Eintracht Frankfurt",
+          "pick": "3:2",
+          "actual": "3:3",
           "kickoff": "Sat 29.08.2026 15:30",
-          "expected_xg": "1.62:2.94",
+          "expected_xg": "1.21:1.71",
           "exact": false,
           "tendency": false,
           "margin": false,
           "kicktipp_points": 0
         },
         {
-          "home": "1. FC Köln",
-          "away": "TSG Hoffenheim",
-          "pick": "1:2",
-          "actual": "3:2",
+          "home": "1. FSV Mainz 05",
+          "away": "SC Paderborn 07",
+          "pick": "2:1",
+          "actual": "0:0",
           "kickoff": "Sat 29.08.2026 15:30",
-          "expected_xg": "1.02:2.31",
+          "expected_xg": "1.77:1.49",
           "exact": false,
           "tendency": false,
           "margin": false,
@@ -1202,24 +1202,24 @@
           "kicktipp_points": 2
         },
         {
-          "home": "1. FSV Mainz 05",
-          "away": "SC Paderborn 07",
-          "pick": "2:1",
-          "actual": "0:0",
+          "home": "1. FC Köln",
+          "away": "TSG Hoffenheim",
+          "pick": "1:2",
+          "actual": "3:2",
           "kickoff": "Sat 29.08.2026 15:30",
-          "expected_xg": "1.77:1.49",
+          "expected_xg": "1.02:2.31",
           "exact": false,
           "tendency": false,
           "margin": false,
           "kicktipp_points": 0
         },
         {
-          "home": "1. FC Union Berlin",
-          "away": "Eintracht Frankfurt",
-          "pick": "3:2",
-          "actual": "3:3",
+          "home": "SV 07 Elversberg",
+          "away": "Bayer 04 Leverkusen",
+          "pick": "1:2",
+          "actual": "3:2",
           "kickoff": "Sat 29.08.2026 15:30",
-          "expected_xg": "1.21:1.71",
+          "expected_xg": "1.62:2.94",
           "exact": false,
           "tendency": false,
           "margin": false,
@@ -1264,5 +1264,137 @@
       ]
     }
   ],
-  "generated_at": "2026-11-23T16:55:58.071624+00:00"
+  "baseline_comparison": {
+    "total_games": 90,
+    "strategies": [
+      {
+        "id": "model",
+        "label": "Unser Modell",
+        "kicktipp_points": 125,
+        "kicktipp_points_max": 360,
+        "kicktipp_points_avg": 1.39,
+        "games": 90,
+        "coverage_pct": 100.0
+      },
+      {
+        "id": "home",
+        "label": "Immer Heimsieg (2:1)",
+        "kicktipp_points": 115,
+        "kicktipp_points_max": 360,
+        "kicktipp_points_avg": 1.28,
+        "games": 90,
+        "coverage_pct": 100.0
+      },
+      {
+        "id": "table",
+        "label": "Bessere Tabellenform (PPG)",
+        "kicktipp_points": 114,
+        "kicktipp_points_max": 360,
+        "kicktipp_points_avg": 1.27,
+        "games": 90,
+        "coverage_pct": 100.0
+      },
+      {
+        "id": "form_xg",
+        "label": "Bessere Form-xG",
+        "kicktipp_points": 88,
+        "kicktipp_points_max": 360,
+        "kicktipp_points_avg": 0.98,
+        "games": 90,
+        "coverage_pct": 100.0
+      },
+      {
+        "id": "bookmaker",
+        "label": "Buchmacher-Favorit (Bet365)",
+        "kicktipp_points": 103,
+        "kicktipp_points_max": 248,
+        "kicktipp_points_avg": 1.66,
+        "games": 62,
+        "coverage_pct": 68.9
+      }
+    ],
+    "cumulative_by_matchday": [
+      {
+        "matchday": 1,
+        "model": 11,
+        "home": 16,
+        "table": 14,
+        "form_xg": 4,
+        "bookmaker": 8
+      },
+      {
+        "matchday": 2,
+        "model": 24,
+        "home": 22,
+        "table": 27,
+        "form_xg": 12,
+        "bookmaker": 18
+      },
+      {
+        "matchday": 3,
+        "model": 30,
+        "home": 32,
+        "table": 37,
+        "form_xg": 22,
+        "bookmaker": 32
+      },
+      {
+        "matchday": 4,
+        "model": 38,
+        "home": 45,
+        "table": 45,
+        "form_xg": 26,
+        "bookmaker": 42
+      },
+      {
+        "matchday": 5,
+        "model": 52,
+        "home": 58,
+        "table": 55,
+        "form_xg": 39,
+        "bookmaker": 50
+      },
+      {
+        "matchday": 6,
+        "model": 64,
+        "home": 73,
+        "table": 64,
+        "form_xg": 48,
+        "bookmaker": 63
+      },
+      {
+        "matchday": 7,
+        "model": 74,
+        "home": 83,
+        "table": 69,
+        "form_xg": 61,
+        "bookmaker": 70
+      },
+      {
+        "matchday": 8,
+        "model": 85,
+        "home": 89,
+        "table": 80,
+        "form_xg": 72,
+        "bookmaker": 74
+      },
+      {
+        "matchday": 9,
+        "model": 108,
+        "home": 106,
+        "table": 102,
+        "form_xg": 80,
+        "bookmaker": 91
+      },
+      {
+        "matchday": 10,
+        "model": 125,
+        "home": 115,
+        "table": 114,
+        "form_xg": 88,
+        "bookmaker": 103
+      }
+    ]
+  },
+  "generated_at": "2026-11-23T21:08:20.184778+00:00"
 }

@@ -4,8 +4,9 @@
   --green-2: #1f4d45;
   --lime: #dfec87;
   --coral: #ff8a5c;
-  --text: #f1f5e2;
+  --text: #9fbcb1;
   --muted: #9fbcb1;
+  --silver: #9fbcb1;
   --line: rgba(223, 236, 135, 0.16);
 }
 
@@ -19,7 +20,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-ui), sans-serif;
   background: var(--green);
   color: var(--text);
   line-height: 1.5;
@@ -27,9 +28,9 @@ body {
 
 h1,
 h2 {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: inherit;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 

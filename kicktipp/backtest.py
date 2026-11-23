@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from .baselines import STRATEGY_LABELS, baseline_picks, points_for_pick
+from .football_data_xg import lookup_odds
 from .metrics import exact_hit, kicktipp_points, margin_hit, rate_summary, tendency_hit
 from .openliga import get_matchday_matches, get_current_matchday, get_season_matches, load_consecutive_finished_rows, match_row
 from .predictor import BundesligaPredictor, ModelBackend
@@ -91,8 +93,14 @@ def backtest_current_season(
     matchday_blocks: list[dict] = []
     all_flags: list[dict] = []
 
+    baseline_strategy_ids = ("model", "home", "table", "form_xg", "bookmaker")
+    baseline_totals: dict[str, int] = {k: 0 for k in baseline_strategy_ids}
+    baseline_counts: dict[str, int] = {k: 0 for k in baseline_strategy_ids}
+    baseline_md_cumulative: dict[int, dict[str, int]] = {}
+
     predictor = BundesligaPredictor(seasons=train_seasons, model_backend=backend, use_dixon_coles=False)
     predictor.load_supplementary()
+    xg_df = predictor.xg_history if predictor.xg_history is not None else pd.DataFrame()
 
     for md in matchdays:
         md_matches = season_df[season_df["matchday"] == md].sort_values("datetime")
@@ -110,6 +118,7 @@ def backtest_current_season(
         predictor.fit(train_df)
         fixtures: list[dict] = []
         md_flags: list[dict] = []
+        md_baseline_pts: dict[str, int] = {k: 0 for k in baseline_strategy_ids}
         for _, r in finished.iterrows():
             pred = predict_fixture_row(
                 predictor,
@@ -122,6 +131,27 @@ def backtest_current_season(
             flags = _match_flags(pred["pick"], actual)
             md_flags.append(flags)
             all_flags.append(flags)
+
+            feats = predictor.builder.snapshot(
+                r["home_team"],
+                r["away_team"],
+                r["datetime"],
+                int(r["weekday"]),
+                home_injuries=0,
+                away_injuries=0,
+            )
+            odds = lookup_odds(xg_df, r["datetime"], r["home_team"], r["away_team"])
+            picks = baseline_picks(feats, odds)
+            md_baseline_pts["model"] += int(flags["kicktipp_points"])
+            baseline_totals["model"] += int(flags["kicktipp_points"])
+            baseline_counts["model"] += 1
+            for key, pick in picks.items():
+                pts = points_for_pick(pick, actual)
+                md_baseline_pts[key] += pts
+                if pick is not None:
+                    baseline_totals[key] += pts
+                    baseline_counts[key] += 1
+
             fixtures.append(
                 {
                     "home": r["home_team"],
@@ -141,13 +171,44 @@ def backtest_current_season(
                 "matches": fixtures,
             }
         )
+        baseline_md_cumulative[int(md)] = dict(md_baseline_pts)
 
     matchday_blocks.sort(key=lambda b: b["matchday"], reverse=True)
+
+    n_games = len(all_flags)
+    strategies: list[dict] = []
+    for sid in baseline_strategy_ids:
+        covered = baseline_counts[sid]
+        pts = baseline_totals[sid]
+        strategies.append(
+            {
+                "id": sid,
+                "label": STRATEGY_LABELS[sid],
+                "kicktipp_points": pts,
+                "kicktipp_points_max": covered * 4,
+                "kicktipp_points_avg": round(pts / covered, 2) if covered else 0.0,
+                "games": covered,
+                "coverage_pct": round(100.0 * covered / n_games, 1) if n_games else 0.0,
+            }
+        )
+
+    running = {k: 0 for k in baseline_strategy_ids}
+    cumulative_by_matchday: list[dict] = []
+    for md in sorted(baseline_md_cumulative):
+        chunk = baseline_md_cumulative[md]
+        for k in baseline_strategy_ids:
+            running[k] += chunk.get(k, 0)
+        cumulative_by_matchday.append({"matchday": md, **running})
 
     return {
         "season": season,
         "season_stats": rate_summary(all_flags),
         "matchdays": matchday_blocks,
+        "baseline_comparison": {
+            "total_games": n_games,
+            "strategies": strategies,
+            "cumulative_by_matchday": cumulative_by_matchday,
+        },
     }
 
 

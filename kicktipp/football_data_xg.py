@@ -35,7 +35,9 @@ def load_season_xg(openliga_season: int) -> pd.DataFrame:
     cache = CACHE_DIR / f"D1_{tag}.csv"
     if cache.exists():
         df = pd.read_csv(cache, parse_dates=["date"])
-        return df
+        if {"B365H", "B365D", "B365A"}.issubset(df.columns):
+            return df
+        # cache predates odds columns — refresh from source
 
     url = BASE_URL.format(season=tag)
     last_err: Exception | None = None
@@ -67,9 +69,12 @@ def load_season_xg(openliga_season: int) -> pd.DataFrame:
     df["home_team"] = df["HomeTeam"].map(normalize_team)
     df["away_team"] = df["AwayTeam"].map(normalize_team)
     df["openliga_season"] = openliga_season
-    out = df[
-        ["Date", "home_team", "away_team", "home_xg", "away_xg", "FTHG", "FTAG", "openliga_season"]
-    ].rename(columns={"Date": "date", "FTHG": "home_goals", "FTAG": "away_goals"})
+    keep = ["Date", "home_team", "away_team", "home_xg", "away_xg", "FTHG", "FTAG", "openliga_season"]
+    for col in ("B365H", "B365D", "B365A"):
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+            keep.append(col)
+    out = df[keep].rename(columns={"Date": "date", "FTHG": "home_goals", "FTAG": "away_goals"})
     out.to_csv(cache, index=False)
     return out
 
@@ -102,3 +107,28 @@ def lookup_xg(
         return None
     r = sub.iloc[0]
     return float(r["home_xg"]), float(r["away_xg"])
+
+
+def lookup_odds(
+    xg_df: pd.DataFrame,
+    kickoff: datetime,
+    home: str,
+    away: str,
+) -> tuple[float, float, float] | None:
+    """Pre-match Bet365 1X2 odds (football-data.co.uk), if present in cache."""
+    if xg_df.empty or not {"B365H", "B365D", "B365A"}.issubset(xg_df.columns):
+        return None
+    home, away = normalize_team(home), normalize_team(away)
+    day = pd.Timestamp(kickoff.date())
+    window = xg_df[
+        (xg_df["date"].dt.date >= (day - pd.Timedelta(days=1)).date())
+        & (xg_df["date"].dt.date <= (day + pd.Timedelta(days=1)).date())
+    ]
+    sub = window[(window["home_team"] == home) & (window["away_team"] == away)]
+    if sub.empty:
+        return None
+    r = sub.iloc[0]
+    h, d, a = float(r["B365H"]), float(r["B365D"]), float(r["B365A"])
+    if min(h, d, a) <= 0 or pd.isna(r["B365H"]):
+        return None
+    return h, d, a
