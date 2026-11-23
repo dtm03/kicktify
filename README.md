@@ -57,7 +57,7 @@ No Python on Vercel at click time — fits the **free** Hobby plan.
 
 **UX:** Reload → scroll = past matchdays only. Click predict → current tips appear for this session. Reload again → hidden until you click predict again.
 
-**Local dev only:** real server training with `http://localhost:3000?train=1` (calls `/api/predict`).
+**Local dev only:** `vercel dev` in `web/` (needs repo root on disk) + `?train=1`, or `npm run dev` with committed `live_prediction.json`.
 
 ### Manual update (without waiting for Monday)
 
